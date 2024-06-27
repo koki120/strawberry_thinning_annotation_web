@@ -20,7 +20,7 @@ export const App = () => {
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/strawberry_thinning_annotation_web">
+    <Route>
       <Route path={appUrl.home} Component={ParameterSelection} />
       <Route path={appUrl.capture} Component={Capture} />
       <Route path={appUrl.captureSave} Component={CaptureSave} />
