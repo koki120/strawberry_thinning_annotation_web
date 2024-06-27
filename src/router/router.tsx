@@ -25,5 +25,6 @@ const router = createBrowserRouter(
       <Route path={appUrl.capture} Component={Capture} />
       <Route path={appUrl.captureSave} Component={CaptureSave} />
     </Route>
-  )
+  ),
+  { basename: "/strawberry_thinning_annotation_web/" }
 );
