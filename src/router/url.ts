@@ -1,5 +1,5 @@
 export const appUrl = {
-  home: "",
-  capture: "capture",
-  captureSave: "save",
+  home: "/",
+  capture: "/capture",
+  captureSave: "/save",
 };
