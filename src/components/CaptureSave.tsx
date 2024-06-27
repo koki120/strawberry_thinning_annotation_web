@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { appUrl } from "../router/url";
 
 export const CaptureSave = () => {
@@ -8,11 +8,27 @@ export const CaptureSave = () => {
     navigate(appUrl.home);
   };
   return (
-    <>
-      <img src={history.state?.usr?.dataUri} alt="Captured" />
-      <Link to={appUrl.home}>設定画面に戻る</Link>
-      <button onClick={handleOnSavePicutre}>保存する</button>
-    </>
+    <div className="grid content-around space-y-4 h-screen">
+      <img
+        className="mx-auto"
+        src={history.state?.usr?.dataUri}
+        alt="Captured"
+      />
+      <div className="flex justify-around">
+        <button
+          className="h-24 w-24 rounded-3xl bg-red-500"
+          onClick={() => navigate(appUrl.home)}
+        >
+          設定画面へ
+        </button>
+        <button
+          className="h-24 w-24 rounded-3xl bg-green-500"
+          onClick={handleOnSavePicutre}
+        >
+          保存する
+        </button>
+      </div>
+    </div>
   );
 };
 
