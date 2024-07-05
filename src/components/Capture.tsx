@@ -16,10 +16,10 @@ export const Capture = () => {
       const dataUri = camera.current.takePhoto();
       navigate(appUrl.captureSave, {
         state: {
-          channel: location.state.channel,
-          row: location.state.row,
-          fruitBunch: location.state.fruitBunch,
-          isPreImage: location.state.isPreImage,
+          channel: location.state?.channel,
+          row: location.state?.row,
+          fruitBunch: location.state?.fruitBunch,
+          isPreImage: location.state?.isPreImage,
           dataUri,
         },
       });

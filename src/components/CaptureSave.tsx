@@ -4,15 +4,22 @@ import { appUrl } from "../router/url";
 export const CaptureSave = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const handleOnSavePicutre = () => {
+  const handleOnSavePicture = () => {
     savePictureInLocal(
-      location.state.dataUri,
-      location.state.channel,
-      location.state.row,
-      location.state.fruitBunch,
-      location.state.isPreImage
+      location.state?.dataUri,
+      location.state?.channel,
+      location.state?.row,
+      location.state?.fruitBunch,
+      location.state?.isPreImage
     );
-    navigate(appUrl.home);
+    navigate(appUrl.home, {
+      state: {
+        channel: location.state?.channel,
+        row: location.state?.row,
+        fruitBunch: location.state?.fruitBunch,
+        isPreImage: location.state?.isPreImage,
+      },
+    });
   };
   return (
     <div className="grid content-around space-y-4 h-screen">
@@ -30,7 +37,7 @@ export const CaptureSave = () => {
         </button>
         <button
           className="h-24 w-24 rounded-3xl bg-green-500"
-          onClick={handleOnSavePicutre}
+          onClick={handleOnSavePicture}
         >
           保存する
         </button>
