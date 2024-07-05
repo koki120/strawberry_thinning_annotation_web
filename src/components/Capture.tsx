@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { Camera } from "react-camera-pro";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { appUrl } from "../router/url";
 
 interface Camera {
@@ -9,11 +9,20 @@ interface Camera {
 export const Capture = () => {
   const camera = useRef<Camera | null>(null);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleTakePhoto = () => {
     if (camera.current) {
       const dataUri = camera.current.takePhoto();
-      navigate(appUrl.captureSave, { state: { dataUri } });
+      navigate(appUrl.captureSave, {
+        state: {
+          channel: location.state.channel,
+          row: location.state.row,
+          fruitBunch: location.state.fruitBunch,
+          isPreImage: location.state.isPreImage,
+          dataUri,
+        },
+      });
     } else {
       console.error("Camera reference is null");
     }

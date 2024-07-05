@@ -1,10 +1,17 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { appUrl } from "../router/url";
 
 export const CaptureSave = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const handleOnSavePicutre = () => {
-    savePicureInLocal(history.state?.usr?.dataUri);
+    savePictureInLocal(
+      location.state.dataUri,
+      location.state.channel,
+      location.state.row,
+      location.state.fruitBunch,
+      location.state.isPreImage
+    );
     navigate(appUrl.home);
   };
   return (
@@ -32,19 +39,21 @@ export const CaptureSave = () => {
   );
 };
 
-const savePicureInLocal = (imageStr: string) => {
-  const stockId = localStorage.getItem("stockId");
-  const preImageId = localStorage.getItem("preImageId");
-  const postImageId = localStorage.getItem("postImageId");
-  const isPreImage = localStorage.getItem("isPreImage") == "true";
-
+const savePictureInLocal = (
+  imageStr: string,
+  channel: string,
+  row: string,
+  fruitBunch: string,
+  isPreImage: boolean
+) => {
   const link = document.createElement("a");
   link.href = imageStr;
   const now = new Date();
-  link.download = `${now.getFullYear()}_${
+  const fileName = `${channel}_${row}_${fruitBunch}_${
+    isPreImage ? "b" : "a"
+  }_${now.getFullYear()}_${
     now.getMonth() + 1
-  }_${now.getDate()}_${now.getDate()}_${stockId}_${
-    isPreImage ? preImageId : postImageId
-  }_${isPreImage ? "before" : "after"}.png`;
+  }_${now.getDate()}_${now.getDate()}`;
+  link.download = `${fileName}.png`;
   link.click();
 };
