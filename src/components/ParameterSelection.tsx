@@ -9,7 +9,7 @@ export const ParameterSelection = () => {
     location.state?.fruitBunch || "1"
   );
   const [isPreImage, setIsPreImage] = useState(
-    location.state?.isPreImage || true
+    location.state?.isPreImage ? true : false
   );
 
   const navigate = useNavigate();
@@ -51,7 +51,7 @@ export const ParameterSelection = () => {
       <label>
         果房番号:
         <input
-          type="text"
+          type="number"
           value={fruitBunch}
           onChange={(e) => setFruitBunch(e.target.value)}
           className="border rounded p-2"
