@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 export const ParameterSelection = () => {
   const location = useLocation();
   const [channel, setChannel] = useState(location.state?.channel || "1");
-  const [row, setRow] = useState(location.state?.isPreImage || "1");
+  const [row, setRow] = useState(location.state?.row || "1");
   const [fruitBunch, setFruitBunch] = useState(
     location.state?.fruitBunch || "1"
   );

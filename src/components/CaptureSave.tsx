@@ -60,7 +60,7 @@ const savePictureInLocal = (
     isPreImage ? "b" : "a"
   }_${now.getFullYear()}_${
     now.getMonth() + 1
-  }_${now.getDate()}_${now.getDate()}_${now.getSeconds()}`;
+  }_${now.getDate()}_${now.getHours()}_${now.getMinutes()}_${now.getSeconds()}`;
   link.download = `${fileName}.png`;
   link.click();
 };
